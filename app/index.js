@@ -5,13 +5,16 @@ const swaggerUi = require('swagger-ui-express');
 const docs = require('./docs');
 const { app: { port } } = require('../config');
 const TodoController = require('../controllers/TodoController');
+const mongooseConnect = require('./mongoose');
 
 const app = express();
 
 module.exports = {
     init: async () => {
+        const models = await mongooseConnect();
+
         const controllerss = {
-            TodoController
+            TodoController: TodoController(models.todo)
         }
 
         app.use('/docs', swaggerUi.serve, swaggerUi.setup(docs));
