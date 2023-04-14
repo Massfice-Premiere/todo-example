@@ -1,0 +1,37 @@
+version: 2.1
+
+orbs:
+    docker: circleci/docker@1.6.0
+
+commands:
+    build_and_push:
+        steps:
+            - setup_remote_docker:
+                  docker_layer_caching: true
+            - run:
+                  name: Build docker image
+                  command: docker build . --tag 'massfice/test-repo:$CIRCLE_SHA1'
+            - run:
+                  name: Login to registry
+                  command: docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+            - run:
+                  name: Push docker image
+                  command: docker push massfice/test-repo:$CIRCLE_SHA1 
+jobs:
+    build_and_push:
+        docker:
+            - image: cimg/deploy:2022.09
+        steps:
+            - build_and_push
+            - build
+
+workflows:
+    version: 2
+    deploy_to_staging:
+        jobs:
+            - build_and_push:
+                  filters:
+                      branches:
+                          only: main
+                  context:
+                      - massfice.premiere
