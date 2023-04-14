@@ -3,6 +3,5 @@
     "info": {
         "title": "Todo Example"
     },
-    "produces": ["application/json"],
-    "basePath": ""
+    "produces": ["application/json"]
 }
