@@ -25,6 +25,7 @@ jobs:
         docker:
             - image: cimg/deploy:2022.09
         steps:
+            - checkout
             - build_and_push
 
 workflows:
