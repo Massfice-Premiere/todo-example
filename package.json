@@ -1,0 +1,21 @@
+{
+  "name": "todo-example",
+  "version": "1.0.0",
+  "description": "This project is for demonstration purpose.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node",
+    "start:dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Massfice-Premiere/todo-example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Massfice-Premiere/todo-example/issues"
+  },
+  "homepage": "https://github.com/Massfice-Premiere/todo-example#readme"
+}
