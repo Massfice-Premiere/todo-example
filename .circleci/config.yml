@@ -23,7 +23,6 @@ jobs:
             - image: cimg/deploy:2022.09
         steps:
             - build_and_push
-            - build
 
 workflows:
     version: 2
