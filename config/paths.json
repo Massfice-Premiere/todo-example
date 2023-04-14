@@ -1,0 +1,15 @@
+{
+    "/api/todos": {
+        "get": {
+            "x-swagger-router-controller": "TodoController",
+            "operationId": "getAll",
+            "tags": ["Todos"],
+            "description": "Get all todos",
+            "responses": {
+                "200": {
+                    "$ref": "#/components/responses/GetAllTodoResponse"
+                }
+            }
+        }
+    }
+}

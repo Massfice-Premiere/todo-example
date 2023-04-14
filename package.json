@@ -17,5 +17,13 @@
   "bugs": {
     "url": "https://github.com/Massfice-Premiere/todo-example/issues"
   },
-  "homepage": "https://github.com/Massfice-Premiere/todo-example#readme"
+  "homepage": "https://github.com/Massfice-Premiere/todo-example#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "swagger-express-router": "^1.0.0",
+    "swagger-ui-express": "^4.6.2"
+  }
 }
