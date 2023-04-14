@@ -14,4 +14,4 @@ module.exports = (TodoModel) => ({
 
         return res.send(todos);
     }
-})
+});

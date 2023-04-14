@@ -18,4 +18,4 @@ module.exports = async () => {
     return {
         todo: mongoose.model('Todos', todoSchema)
     };
-}
+};
