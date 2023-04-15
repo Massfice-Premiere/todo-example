@@ -11,7 +11,11 @@ const app = express();
 
 module.exports = {
     init: async () => {
-        const models = await mongooseConnect();
+        const models = await mongooseConnect().catch((error) => {
+            console.error(error);
+
+            return {};
+        });
 
         const controllerss = {
             TodoController: TodoController(models.todo)

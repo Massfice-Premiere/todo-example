@@ -31,6 +31,9 @@
                     }
                 }
             }
+        },
+        "InternalServerErrorResponse": {
+            "description": "Internal server error"
         }
     }
 }

@@ -8,6 +8,9 @@
             "responses": {
                 "200": {
                     "$ref": "#/components/responses/GetAllTodoResponse"
+                },
+                "500": {
+                    "$ref": "#/components/responses/InternalServerErrorResponse"
                 }
             }
         }
