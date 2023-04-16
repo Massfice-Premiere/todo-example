@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { mongo: { uri, dbname } } = require('../config');
 
 module.exports = async () => {
-    await mongoose.connect(`${uri}/${dbname}`);
+    await mongoose.connect(`${uri}/${dbname}?authSource=admin`);
 
     const todoSchema = new mongoose.Schema({
         description: {
