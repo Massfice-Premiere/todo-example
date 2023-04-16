@@ -2,7 +2,6 @@ const docs = require('../config/docs.json');
 const components = require('../config/components.json');
 const paths = require('../config/paths.json');
 const { version, description } = require('../package.json');
-const { swagger: { host } } = require('../config');
 
 module.exports = {
     ...docs,
@@ -11,7 +10,6 @@ module.exports = {
         version,
         description
     },
-    host,
     components,
     paths
 };
