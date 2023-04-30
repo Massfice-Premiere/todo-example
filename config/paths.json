@@ -13,6 +13,26 @@
                     "$ref": "#/components/responses/InternalServerErrorResponse"
                 }
             }
+        },
+        "post": {
+            "x-swagger-router-controller": "TodoController",
+            "operationId": "create",
+            "tags": ["Todos"],
+            "description": "Create todo",
+            "requestBody": {
+                "$ref": "#/components/requestBodies/CreateTodoRequest"
+            },
+            "responses": {
+                "201": {
+                    "$ref": "#/components/responses/CreateTodoResponse"
+                },
+                "400": {
+                    "$ref": "#/components/responses/BadRequestResponse"
+                },
+                "500": {
+                    "$ref": "#/components/responses/InternalServerErrorResponse"
+                }
+            }
         }
     }
 }

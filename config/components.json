@@ -16,6 +16,13 @@
                     "example": false
                 }
             }
+        },
+        "Errors": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "example": ["error1", "error2", "error3"]
         }
     },
     "responses": {
@@ -32,8 +39,52 @@
                 }
             }
         },
+        "CreateTodoResponse": {
+            "description": "Created todo",
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "#/components/schemas/Todo"
+                    }
+                }
+            }
+        },
+        "BadRequestResponse": {
+            "description": "Validation errors",
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "#/components/schemas/Errors"
+                    }
+                }
+            }
+        },
         "InternalServerErrorResponse": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "#/components/schemas/Errors"
+                    }
+                }
+            }
+        }
+    },
+    "requestBodies": {
+        "CreateTodoRequest": {
+            "description": "Request for create new todo",
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "description": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
