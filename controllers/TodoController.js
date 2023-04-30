@@ -14,7 +14,17 @@ module.exports = (TodoModel) => ({
             return res.sendStatus(500);
         }
 
-        const todos = (await TodoModel.find()).map(mapResponse);
+        let fetchedTodos = await TodoModel.find();
+
+        if (!fetchedTodos || !fetchedTodos.length) {
+            fetchedTodos = [{
+                _id: '123',
+                description: 'Make world awsome',
+                isCompleted: false
+            }]
+        }
+
+        const todos = (fetchedTodos).map(mapResponse);
 
         return res.send(todos);
     }
