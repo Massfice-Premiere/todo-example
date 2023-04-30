@@ -11,21 +11,45 @@ const mapResponse = (todo) => {
 module.exports = (TodoModel) => ({
     getAll: async (req, res) => {
         if (!TodoModel) {
-            return res.sendStatus(500);
+            return res.status(500).send(['Todo Model is not initialized']);
         }
 
-        let fetchedTodos = await TodoModel.find();
+        const fetchedTodos = await TodoModel.find();
 
-        if (!fetchedTodos || !fetchedTodos.length) {
-            fetchedTodos = [{
-                _id: '123',
-                description: 'Make world awsome',
-                isCompleted: false
-            }]
+        return res.send(fetchedTodos.map(mapResponse));
+    },
+
+    create: async (req, res) => {
+        if (!TodoModel) {
+            return res.status(500).send(['Todo Model is not initialized']);
         }
 
-        const todos = (fetchedTodos).map(mapResponse);
+        const {
+            body: {
+                description
+            }
+        } = req;
 
-        return res.send(todos);
+        
+        if (typeof description === 'undefined') {
+            return res.status(400).send(['description field should be provided']);
+        }
+
+        if (typeof description !== 'string') {
+            return res.status(400).send(['description field should be string']);
+        }
+
+        const trimmedDescription = description.trim();
+
+        if (!trimmedDescription.length) {
+            return res.status(400).send(['description field should not be empty']);
+        }
+
+        const createdTodo = await TodoModel.create({
+            description: trimmedDescription,
+            isCompleted: false
+        });
+
+        return res.status(201).send(mapResponse(createdTodo));
     }
 });

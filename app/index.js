@@ -21,6 +21,7 @@ module.exports = {
             TodoController: TodoController(models.todo)
         }
 
+        app.use(express.json());
         app.use('/docs', swaggerUi.serve, swaggerUi.setup(docs));
         swagger.setUpRoutes(controllerss, app, docs, false);
 
