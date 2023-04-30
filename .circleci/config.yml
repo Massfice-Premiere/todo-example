@@ -13,13 +13,13 @@ commands:
                   command: docker build . --tag 'build:build'
             - run:
                   name: Tag image
-                  command: docker tag build:build massfice/test-repo:$CIRCLE_SHA1
+                  command: docker tag build:build massfice/todo-example:$CIRCLE_SHA1
             - run:
                   name: Login to registry
                   command: docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
             - run:
                   name: Push docker image
-                  command: docker push massfice/test-repo:$CIRCLE_SHA1 
+                  command: docker push massfice/todo-example:$CIRCLE_SHA1 
 jobs:
     build_and_push:
         docker:
